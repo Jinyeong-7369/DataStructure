@@ -1,8 +1,6 @@
-#include<iostream>
-#include<string>
-using namespace std;
 #include"listClass.h"
 using namespace std;
+#include<string>
 
 #include<string>
 
