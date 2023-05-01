@@ -1,6 +1,9 @@
 #include"listClass.h"
 using namespace std;
 
+#include<string>
+
+
 listClass::listClass()
 {
 	head = NULL;

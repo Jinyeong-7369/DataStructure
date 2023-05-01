@@ -1,6 +1,5 @@
 #include"listClass.h"
 using namespace std;
-#include<string>
 
 #include<string>
 
