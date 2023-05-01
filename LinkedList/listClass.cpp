@@ -1,8 +1,5 @@
-#include<iostream>
-
-using namespace std;
-
 #include"listClass.h"
+using namespace std;
 
 listClass::listClass()
 {
@@ -18,7 +15,6 @@ listClass::~listClass()
 }
 void listClass::PrintAll()//출력
 {
-	cout << "count : " << Length() << ' ';//count 출력, Length()대신 count를 써도 무방
 	Nptr tmp = head;
 	for (int i = 0; i < count; i++)
 	{
@@ -53,8 +49,7 @@ void listClass::Insert(int position, int item)//지정한 위치에 삽입
 			tmp->next = p;//tmp의 다음노드 = p
 		}
 		count++;//리스트 길이 늘임
-		cout << "리스트의 " << position << " 위치에 " << item << " 삽입 했습니다.";
-		PrintAll();//리스트 상태 출력
+		cout << "리스트의 " << position << " 위치에 " << item << " 삽입 했습니다." << endl;
 	}
 }
 void listClass::Delete(int position)//지정한 위치 삭제
@@ -87,8 +82,7 @@ void listClass::Delete(int position)//지정한 위치 삭제
 		}
 		delete(p);
 		count--;//리스트 크기 감소 
-		cout << "리스트의 " << position << " 위치의 데이터를 삭제 했습니다.";
-		PrintAll();//리스트의 상태 출력
+		cout << "리스트의 " << position << " 위치의 데이터를 삭제 했습니다." << endl;
 	}
 }
 void listClass::Retrieve(int position, int& item)//지정한 위치 데이터 복사
@@ -112,7 +106,6 @@ void listClass::Retrieve(int position, int& item)//지정한 위치 데이터 복사
 
 		
 		item = p->data;//item에 data 복사 
-		cout << position << "위치에 있는 값이 복사되었습니다." << endl;
 	}
 }
 bool listClass::IsEmpty()//리스트가 비어있는지 검사 

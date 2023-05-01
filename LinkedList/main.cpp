@@ -1,42 +1,73 @@
 #include<iostream>
+#include<string>
+using namespace std;
+#include"listClass.h"
 using namespace std;
 
-#include"listClass.h"
+#include<string>
+
+void showOption()
+{
+	string option[7] = { "삽입", "삭제", "출력", "검색", "비어있는지 검사", "길이 출력", "종료" };
+	cout << "======================================================================" << endl;
+	for (int i = 0; i < 7; i++)
+	{
+		cout << i + 1 << ". " + option[i] << endl << endl;
+	}
+	cout << "======================================================================" << endl;
+}
+
+
+
 
 int main(void)
 {
-	listClass list;//리스트 생성
-	int n = 0;
-	//Insert
-	list.Insert(-1, 0);//1보다 작은 위치 삽입 오류
-	list.Insert(1, 3);//첫 번째 위치 삽입(count : 1)
-	list.Insert(2, 5);//두 번째 위치 삽입(count : 2)
-	list.Insert(3, 6);//세 번째 위치 삽입(count : 3)
-	list.Insert(5, 9);//이격된 위치 삽입 오류
-	list.Insert(1, 4);//첫 번째 위치 삽입(count : 4)
-	list.Insert(5, 2);//다섯번째 위치 삽입(count : 5)
-	list.Insert(3, 3);//리스트가 가득 찼을 시 삽입 오류
-	//Retrieve
-	for (int i = 1; i < list.Length() + 1; i++)
-	{//반복문으로 처음 인덱스 부터 마지막 인덱스까지 복사하고 출력하기 
-		list.Retrieve(i, n);
-		cout << "n : " << n << endl;
+	listClass list;
+	showOption();
+	int position = 0;
+	int item = 0;
+	while (1)
+	{
+		cout << "원하는 기능 선택 >>";
+		int sel;
+		cin >> sel;
+		switch (sel)
+		{
+		case 1:
+			cout << "삽입할 데이터와 위치를 입력해 주세요 >>";
+			cin >> item >> position;
+			list.Insert(position, item);
+			continue;
+			break;
+		case 2:
+			cout << "삭제할 위치를 입력해 주세요 >> ";
+			cin >> position;
+			list.Delete(position);
+			break;
+		case 3:
+			list.PrintAll();
+			break;
+		case 4:
+			cout << "검색할 위치를 입력해 주세요 >> ";
+			cin >> position;
+			list.Retrieve(position, item);
+			cout << "position위치에 있는 값은 " << item << "입니다." << endl;
+			break;
+		case 5:
+			cout << "리스트는 ";
+			if (list.IsEmpty()) cout << "비어있습니다." << endl;
+			else cout << "비어있지 않습니다." << endl;
+			break;
+		case 6:
+			cout << "리스트의 길이는 " << list.Length() << "입니다." << endl;
+			break;
+		case 7:
+			cout << "프로그램을 종료합니다" << endl;
+			return 0;
+		default:
+			cout << "잘못된 입력입니다." << endl;
+		}
 	}
 
-	//Delete 및 Retrieve
-	list.Delete(1);//첫 번째 위치 삭제(count : 4)
-	list.Retrieve(5, n);//비어있는 리스트 지정시 오류 
-	list.Delete(4);//마지막 위치 삭제(count : 3)
-	list.Delete(2);//두 번째 위치 삭제(count : 2)
-	list.Delete(1);//첫 번째 위치 삭제(count : 1)
-	list.Delete(2);//비어있는 위치 지정시 오류
-	list.Delete(1);//첫 번째 위치 삭제(count : 0)
-	list.Retrieve(1, n);//비어있는 리스트 지정시 오류 
 
-	//Insert 및 소멸자 함수
-	list.Insert(1, 3);//첫 번째 위치 삽입(count : 1)
-	list.Insert(2, 5);//두 번째 위치 삽입(count : 2)
-	list.Insert(3, 6);//세 번째 위치 삽입(count : 3)
-	list.Insert(1, 4);//첫 번째 위치 삽입(count : 4)
-	list.Insert(5, 2);//다섯번째 위치 삽입(count : 5)
 }
